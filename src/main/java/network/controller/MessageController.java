@@ -3,11 +3,13 @@ package network.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import network.data.models.Message;
 import network.data.models.User;
+import network.data.models.UserInfo;
 import network.dto.MessageResponse;
 import network.dto.messages;
 import network.interceptor.HasRole;
 import network.services.IMessageService;
 import network.services.IUserService;
+import network.services.implement.FCMService;
 import network.util.TokenManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,15 +27,17 @@ public class MessageController {
     private IMessageService iMessageService;
     @Autowired
     private IUserService iUserService;
+    @Autowired
+    private FCMService fcmService;
     @GetMapping("/GetAllMessage")
     @HasRole("User")
-    public ResponseEntity<MessageResponse> GetMessageByUser( @RequestHeader("AuthToken") String token) throws JsonProcessingException {
-        MessageResponse messageResponse = new MessageResponse();
+    public ResponseEntity<List<UserInfo>> GetMessageByUser(@RequestHeader("AuthToken") String token) throws JsonProcessingException {
         Integer idUser =this.getIdUser(token);
-        messageResponse.setListMessageFrom(iMessageService.getMessageFrom(idUser));
-        messageResponse.setListMessageTo(iMessageService.getMessageTo(idUser));
+        List<UserInfo> list = new ArrayList<>();
+        list.addAll(iMessageService.getMessageFrom(idUser));
+        list.addAll(iMessageService.getMessageTo(idUser));
 
-        return new ResponseEntity<>( messageResponse, HttpStatus.OK);
+        return new ResponseEntity<>( list, HttpStatus.OK);
     }
     @HasRole("User")
     @GetMapping("/GetMessage/{userIdTo}")
@@ -45,7 +50,8 @@ public class MessageController {
     public ResponseEntity<String> AddMessage(@PathVariable("userIdTo") Integer userIdTo, @RequestHeader("AuthToken") String token,@RequestBody Message message) throws JsonProcessingException {
         message.setUserIdTo(userIdTo);
         message.setUserIdFrom(this.getIdUser(token));
-        iMessageService.save(message);
+        Message message1 = iMessageService.save(message);
+      //  String a= fcmService.pushNotification(message1,token);
         return new ResponseEntity<>("Create",HttpStatus.OK);
 
     }

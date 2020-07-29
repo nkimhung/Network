@@ -1,6 +1,7 @@
 package network.data.models;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -13,8 +14,8 @@ public class Post {
     private String cation;
     private String type;
     private String post_url;
-    private String time_created;
-    private String time_updated;
+    private LocalDateTime time_created;
+    private LocalDateTime time_updated;
     @Transient
     private List<Like> likes;
     @Transient
@@ -86,19 +87,19 @@ public class Post {
         this.post_url = post_url;
     }
 
-    public String getTime_created() {
+    public LocalDateTime getTime_created() {
         return time_created;
     }
 
-    public void setTime_created(String time_created) {
+    public void setTime_created(LocalDateTime time_created) {
         this.time_created = time_created;
     }
 
-    public String getTime_updated() {
+    public LocalDateTime getTime_updated() {
         return time_updated;
     }
 
-    public void setTime_updated(String time_updated) {
+    public void setTime_updated(LocalDateTime time_updated) {
         this.time_updated = time_updated;
     }
 }

@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,7 +59,7 @@ public class CommentServiceImpl implements ICommentService {
 
     @Override
     public Comment save(Comment comment) {
-        String time = java.time.LocalDateTime.now().toString();
+        LocalDateTime time = java.time.LocalDateTime.now();
         comment.setTimeCreated(time);
         comment.setTimeUpdated(time);
         return commentRepository.save(comment);
@@ -73,7 +74,7 @@ public class CommentServiceImpl implements ICommentService {
             Comment updatingComment = optionalUpdatingComment.get();
             if (null != comment.getContent())
                 updatingComment.setContent(comment.getContent());
-            updatingComment.setTimeUpdated(java.time.LocalDateTime.now().toString());
+            updatingComment.setTimeUpdated(java.time.LocalDateTime.now());
             return commentRepository.save(updatingComment);
         }
 

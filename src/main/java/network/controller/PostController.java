@@ -45,7 +45,48 @@ public class PostController {
         Optional<User> user= iUserService.findByUsername(userName);
         return user.get().getId();
     }
+    @GetMapping("/PostFollow/{idFollow}")
+    @HasRole("User")
+    public ResponseEntity<List<Post>> GetAllPostFollow( @RequestHeader("AuthToken") String token,@PathVariable("idFollow") Integer userIdFollow) throws Exception {
+        List<Post> list= iPostService.getAllFollowByUser( this.getIdUser(token),userIdFollow);
+        return new ResponseEntity<>(list,HttpStatus.OK);
 
+    }
+    @GetMapping("/MyPost")
+    @HasRole("User")
+    public ResponseEntity<List<Post>> GetAllMyPost( @RequestHeader("AuthToken") String token) throws Exception {
+        List<Post> list= iPostService.getAllMyPost(this.getIdUser(token));
+        return new ResponseEntity<>(list,HttpStatus.OK);
+
+    }
+    @GetMapping("/MyPost/{idInfo}")
+    @HasRole("User")
+    public ResponseEntity<List<Post>> GetAllMyPost(@PathVariable("idInfo") Integer userIdInfo) throws Exception {
+        List<Post> list= iPostService.getAllMyPost(iUserService.findByUserInfo(userIdInfo).get().getId());
+        return new ResponseEntity<>(list,HttpStatus.OK);
+
+    }
+    @GetMapping("/MyImage")
+    @HasRole("User")
+    public ResponseEntity<List<String>> GetAllMyImage( @RequestHeader("AuthToken") String token) throws Exception {
+        List<String> list= iPostService.getAllMyImage(this.getIdUser(token));
+        return new ResponseEntity<>(list,HttpStatus.OK);
+
+    }
+    @GetMapping("/MyImage/{idInfo}")
+    @HasRole("User")
+    public ResponseEntity<List<String>> GetAllImageUser(@PathVariable("idInfo") Integer userIdInfo) throws Exception {
+        List<String> list= iPostService.getAllMyImage(iUserService.findByUserInfo(userIdInfo).get().getId());
+        return new ResponseEntity<>(list,HttpStatus.OK);
+
+    }
+    @GetMapping("/PostFollow")
+    @HasRole("User")
+    public ResponseEntity<List<Post>> GetAllPostFollow( @RequestHeader("AuthToken") String token) throws Exception {
+        List<Post> list= iPostService.getAllFollow( this.getIdUser(token));
+        return new ResponseEntity<>(list,HttpStatus.OK);
+
+    }
     @PostMapping("/Post")
     @HasRole("User")
     public ResponseEntity<String> AddPost( @RequestHeader("AuthToken") String token,@RequestBody Post post) throws Exception {

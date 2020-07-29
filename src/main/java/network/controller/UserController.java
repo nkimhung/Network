@@ -40,11 +40,10 @@ public class UserController {
     @PutMapping("/User")
     @HasRole("User")
     public ResponseEntity<String> updateUser(@RequestBody User user, @RequestHeader("AuthToken") String token) throws Exception {
-
-
-        Optional<User> currentUser = iUserService.get(user.getId());
-        if(currentUser.get().getPassword().equals(DigestUtils.md5Hex(user.getPassword()))){
-            User user1= iUserService.update(user);
+        User currentUser = iUserService.get(this.getIdUser(token)).get();
+        if(currentUser.getPassword().equals(DigestUtils.md5Hex(user.getPassword()))){
+            currentUser.setNewPassword(user.getNewPassword());
+            User user1= iUserService.update(currentUser);
             return new ResponseEntity<>("Updated!", HttpStatus.OK);
         }else
             return new ResponseEntity<>("Sai password",HttpStatus.NOT_FOUND);
@@ -56,11 +55,8 @@ public class UserController {
         if(currentUser.isPresent()){
             return new ResponseEntity<>("username da ton tai",HttpStatus.NOT_ACCEPTABLE);
         }
-        if(iUserInfoService.get(user.getUsers_info_id()).isPresent()) {
-            iUserService.save(user);
-            return new ResponseEntity<>("Create!", HttpStatus.OK);
-        }else
-            return new ResponseEntity<>("Không tim thay userInfo",HttpStatus.BAD_REQUEST);
+        iUserService.save(user);
+        return new ResponseEntity<>("Create!", HttpStatus.OK);
 
     }
     @PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)

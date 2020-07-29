@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -32,6 +34,46 @@ public class UserInfoController {
         Optional<User> userInfo1= iUserService.findByUsername(userName);
         int id =userInfo1.get().getUsers_info_id();
         return userInfoService.get(id).get();
+    }
+    @GetMapping("/UserInfo/{idInfo}")
+    @HasRole("User")
+    public UserInfo getInfoOf(@PathVariable("idInfo") Integer userIdInfo) throws JsonProcessingException {
+        return userInfoService.get(userIdInfo).get();
+    }
+    @GetMapping("/UserFollow")
+    @HasRole("User")
+    public ResponseEntity<List<UserInfo>> getUserFollow( @RequestHeader("AuthToken") String token) throws JsonProcessingException {
+        String userName= TokenManager.getInstance().getUsername(token);
+        Optional<User> userInfo1= iUserService.findByUsername(userName);
+        int id =userInfo1.get().getId();
+        return new ResponseEntity<>(userInfoService.GetFollow(id),HttpStatus.OK);
+    }
+    @GetMapping("/UserFollow/{idInfo}")
+    @HasRole("User")
+    public ResponseEntity<List<UserInfo>> getUserFollowForUser(@PathVariable("idInfo") Integer userIdInfo, @RequestHeader("AuthToken") String token) throws JsonProcessingException {
+        Optional<User> userInfo1= iUserService.findByUserInfo(userIdInfo);
+        int id =userInfo1.get().getId();
+        return new ResponseEntity<>(userInfoService.GetFollow(id),HttpStatus.OK);
+    }
+    @GetMapping("/UserByFollow")
+    @HasRole("User")
+    public ResponseEntity<List<UserInfo>> getUserByFollow( @RequestHeader("AuthToken") String token) throws JsonProcessingException {
+        String userName= TokenManager.getInstance().getUsername(token);
+        Optional<User> userInfo1= iUserService.findByUsername(userName);
+        int id =userInfo1.get().getId();
+        return new ResponseEntity<>(userInfoService.GetByFollow(id),HttpStatus.OK);
+    }
+    @GetMapping("/UserByFollow/{idInfo}")
+    @HasRole("User")
+    public ResponseEntity<List<UserInfo>> getUserByFollowUser(@PathVariable("idInfo") Integer userIdInfo) throws JsonProcessingException {
+        Optional<User> userInfo1= iUserService.findByUserInfo(userIdInfo);
+        int id =userInfo1.get().getId();
+        return new ResponseEntity<>(userInfoService.GetByFollow(id),HttpStatus.OK);
+    }
+    @GetMapping("/AllUserInfo")
+    @HasRole("User")
+    public ResponseEntity<List<UserInfo>> getAll( @RequestHeader("AuthToken") String token) throws JsonProcessingException {
+        return new ResponseEntity<>(userInfoService.getAll(),HttpStatus.OK);
     }
     @PutMapping("/UserInfo")
     @HasRole("User")

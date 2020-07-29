@@ -11,6 +11,29 @@ public class Relationship {
     private int userOneId;
     private int userTwoId;
     private int actionUserId;
+    private Boolean isRead;
+
+
+    @Transient
+    private UserInfo userInfo;
+
+    public Relationship() {
+    }
+
+    public UserInfo getUserInfo() {
+        return userInfo;
+    }
+
+    public void setUserInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
+    }
+    public Boolean getRead() {
+        return isRead;
+    }
+
+    public void setRead(Boolean read) {
+        isRead = read;
+    }
 
     public int getId() {
         return id;

@@ -1,7 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="72695bf1-dace-4f2f-bb63-55158bc75c5e" name="Default Changelist" comment="" />
+    <list default="true" id="72695bf1-dace-4f2f-bb63-55158bc75c5e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/network/services/implement/FCMInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/network/services/implement/FCMService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/network-3da82-firebase-adminsdk-v00z0-26295440ab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/network-3da82-firebase-adminsdk-v00z0-8287779304.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Network.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/network/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/network/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/network/controller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/network/controller/MessageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/network/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/network/controller/PostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/network/controller/RelationShipController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/network/controller/RelationShipController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/network/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/network/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/network/controller/UserInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/network/controller/UserInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/network/data/models/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/network/data/models/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/network/data/models/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/network/data/models/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/network/data/models/Relationship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/network/data/models/Relationship.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/network/data/repo/PostRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/network/data/repo/PostRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/network/data/repo/RelationshipRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/network/data/repo/RelationshipRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/network/data/repo/UserInfoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/network/data/repo/UserInfoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/network/data/repo/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/network/data/repo/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/network/services/IMessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/network/services/IMessageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/network/services/IPostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/network/services/IPostService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/network/services/IRelationshipService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/network/services/IRelationshipService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/network/services/IUserInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/network/services/IUserInfoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/network/services/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/network/services/IUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/network/services/implement/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/network/services/implement/CommentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/network/services/implement/MessageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/network/services/implement/MessageServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/network/services/implement/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/network/services/implement/PostServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/network/services/implement/RelationshipImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/network/services/implement/RelationshipImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/network/services/implement/UserInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/network/services/implement/UserInfoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/network/services/implement/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/network/services/implement/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/Network.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/network/controller/MessageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/network/controller/MessageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/network/controller/PostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/network/controller/PostController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/network/controller/RelationShipController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/network/controller/RelationShipController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/network/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/network/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/network/controller/UserInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/network/controller/UserInfoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/network/data/models/Comment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/network/data/models/Comment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/network/data/models/Post.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/network/data/models/Post.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/network/data/models/Relationship.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/network/data/models/Relationship.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/network/data/repo/PostRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/network/data/repo/PostRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/network/data/repo/RelationshipRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/network/data/repo/RelationshipRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/network/data/repo/UserInfoRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/network/data/repo/UserInfoRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/network/data/repo/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/network/data/repo/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/network/services/IMessageService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/network/services/IMessageService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/network/services/IPostService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/network/services/IPostService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/network/services/IRelationshipService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/network/services/IRelationshipService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/network/services/IUserInfoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/network/services/IUserInfoService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/network/services/IUserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/network/services/IUserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/network/services/implement/CommentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/network/services/implement/CommentServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/network/services/implement/MessageServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/network/services/implement/MessageServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/network/services/implement/PostServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/network/services/implement/PostServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/network/services/implement/RelationshipImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/network/services/implement/RelationshipImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/network/services/implement/UserInfoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/network/services/implement/UserInfoServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/network/services/implement/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/network/services/implement/UserServiceImpl.class" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,15 +75,19 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1cTACrEL6FtSbz5p3UgeFzd7J8Y" />
   <component name="PropertiesComponent">
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -44,6 +107,7 @@
       <recent name="network.interceptor" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Hung\Desktop\Network\src\main\resources" />
       <recent name="C:\Users\Hung\IdeaProjects\Network" />
     </key>
   </component>
@@ -98,11 +162,37 @@
       <workItem from="1591280768977" duration="8936000" />
       <workItem from="1591408291821" duration="28686000" />
       <workItem from="1591671068203" duration="5108000" />
+      <workItem from="1591796441745" duration="4859000" />
+      <workItem from="1591993468487" duration="616000" />
+      <workItem from="1592704000824" duration="1982000" />
+      <workItem from="1592728871319" duration="1494000" />
+      <workItem from="1592963219980" duration="23686000" />
+      <workItem from="1593336348451" duration="922000" />
+      <workItem from="1593409234755" duration="6154000" />
+      <workItem from="1593425705233" duration="1744000" />
+      <workItem from="1593492916304" duration="12242000" />
+      <workItem from="1593565930181" duration="4014000" />
+      <workItem from="1593597466222" duration="8291000" />
+      <workItem from="1593659829351" duration="4658000" />
+      <workItem from="1593677441167" duration="6014000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -111,31 +201,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/network/services/ICommentService.java</url>
           <line>6</line>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/network/controller/UserController.java</url>
-          <line>67</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/network/services/implement/PostServiceImpl.java</url>
-          <line>70</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/network/services/implement/LikeServiceImpl.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/network/services/implement/UserInfoServiceImpl.java</url>
-          <line>39</line>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/network/controller/UserInfoController.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="36" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

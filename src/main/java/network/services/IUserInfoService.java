@@ -10,6 +10,8 @@ public interface IUserInfoService {
 
     public List<UserInfo> getAll();
 
+    public List<UserInfo> GetFollow(Integer idUser);
+    public List<UserInfo> GetByFollow(Integer idUser);
     public UserInfo save(UserInfo userInfo);
 
     public UserInfo update(UserInfo userInfo) throws Exception;

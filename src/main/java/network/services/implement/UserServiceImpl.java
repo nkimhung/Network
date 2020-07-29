@@ -1,6 +1,8 @@
 package network.services.implement;
 
 import network.data.models.User;
+import network.data.models.UserInfo;
+import network.data.repo.UserInfoRepository;
 import network.data.repo.UserRepository;
 import network.exception.LogicException;
 import network.services.IUserService;
@@ -18,10 +20,17 @@ import java.util.Optional;
 public class UserServiceImpl implements IUserService {
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private UserInfoRepository userInfoRepository;
 
     @Override
     public Optional<User> findByUsername(String username) {
         return userRepository.findByUsername(username);
+    }
+
+    @Override
+    public Optional<User> findByUserInfo(Integer UserInfoId) {
+        return userRepository.findId(UserInfoId);
     }
 
     @Override
@@ -35,23 +44,30 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public User save(User user) {
-
+    public User save(User user) throws LogicException {
+        if(user.getUsername()==null || user.getUsername().equals("")){
+            throw new LogicException("Username không hợp lệ", HttpStatus.BAD_REQUEST);
+        }
         user.setPassword(DigestUtils.md5Hex(user.getPassword()));
+        UserInfo userInfo = new UserInfo();
+        userInfo.setAvatar_picture_url("3023580924700user.png");
+        userInfo.setLast_name(user.getUsername());
+        String time = java.time.LocalDateTime.now().toString();
+        userInfo.setTime_created(time);
+        userInfo.setTime_updated(time);
+        UserInfo userInfo1 =userInfoRepository.save(userInfo);
+        int id =userInfo1.getId();
+
+        user.setUsers_info_id(id);
         return userRepository.save(user);
     }
 
     @Override
     public User update(User user) throws Exception {
-        Optional<User> optionalUpdatingUser = userRepository.findById(user.getId());
-        if (!optionalUpdatingUser.isPresent()) {
-            throw new LogicException("User không tồn tại", HttpStatus.NOT_FOUND);
-        }
-        User updatingUser = optionalUpdatingUser.get();
         if (null != user.getNewPassword()) {
-            updatingUser.setPassword(DigestUtils.md5Hex(user.getNewPassword()));
+            user.setPassword(DigestUtils.md5Hex(user.getNewPassword()));
         }
-        return userRepository.save(updatingUser);
+        return userRepository.save(user);
     }
 
     @Override

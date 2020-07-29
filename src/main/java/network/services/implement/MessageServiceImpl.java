@@ -29,42 +29,56 @@ public class MessageServiceImpl implements IMessageService {
     @Autowired
     MessageServiceImpl messageService;
     @Override
-    public List<messages> getMessageFrom(Integer userIdFrom) {
+    public List<UserInfo> getMessageFrom(Integer userIdFrom) {
         List<Message> messageList =messageRepository.findAllByUserIdFrom(userIdFrom);
-        List<messages> list = new ArrayList<>();
+        List<UserInfo> list = new ArrayList<>();
         for (Message message: messageList
              ) {
 
-            list.add(messageService.getLikeFullInfo(message));
+            Optional<User> idUserInfo = userRepository.findById(message.getUserIdTo());
+
+            Optional<UserInfo> userInfo =userInfoRepository.findById(idUserInfo.get().getUsers_info_id());
+            list.add(userInfo.get());
 
         }
          return list;
     }
     @Override
-    public List<messages> getMessageTo(Integer userIdFrom) {
+    public List<UserInfo> getMessageTo(Integer userIdFrom) {
         List<Message> messageList =messageRepository.findAllByUserIdTo(userIdFrom);
-        List<messages> list = new ArrayList<>();
+        List<UserInfo> list = new ArrayList<>();
         for (Message message: messageList
         ) {
+            Optional<User> idUserInfo = userRepository.findById(message.getUserIdFrom());
 
-            list.add(messageService.getLikeFullInfo(message));
-
+            Optional<UserInfo> userInfo =userInfoRepository.findById(idUserInfo.get().getUsers_info_id());
+            list.add(userInfo.get());
         }
         return list;
     }
-    public messages getLikeFullInfo (Message message){
 
-        Optional<User> idUserInfo = userRepository.findById(message.getUserIdTo());
+    public messages getLikeFullInfo (Message message,Integer idTo){
+
+        Optional<User> idUserInfo = userRepository.findById(message.getUserIdFrom() );
 
         Optional<UserInfo> userInfo =userInfoRepository.findById(idUserInfo.get().getUsers_info_id());
+        Optional<User> idUserInfo1 = userRepository.findById(message.getUserIdTo() );
+
+        Optional<UserInfo> userInfo1 =userInfoRepository.findById(idUserInfo1.get().getUsers_info_id());
         messages messages=new messages();
-        messages.set_id(1);
         messages.setText(message.getContent());
         messages.setCreatedAt(message.getTime_created());
         user user= new user();
-        user.set_id(2);
+
         user.setName(userInfo.get().getFirst_name()+" "+userInfo.get().getLast_name());
-        user.setAvatar(userInfo.get().getAvatar_picture_url());
+        if(idUserInfo.get().getId()==idTo){
+            user.setAvatar(userInfo.get().getAvatar_picture_url());
+            user.set_id(userInfo.get().getId());
+        }
+        else {
+            user.set_id(userInfo.get().getId());
+            user.setAvatar(userInfo1.get().getAvatar_picture_url());
+        }
         messages.setUser(user);
         return messages;
     }
@@ -73,10 +87,13 @@ public class MessageServiceImpl implements IMessageService {
     public List<messages> getMessage(Integer userIdFrom, Integer userIdTo) {
         List<Message> messageList = messageRepository.findAllWithUserTO(userIdFrom,userIdTo);
         List<messages> list = new ArrayList<>();
+        int index =1;
         for (Message message: messageList
         ) {
-
-            list.add(messageService.getLikeFullInfo(message));
+            messages messages=messageService.getLikeFullInfo(message,userIdTo);
+            messages.set_id(index);
+            list.add(messages);
+            index++;
 
         }
         return list;
@@ -85,6 +102,8 @@ public class MessageServiceImpl implements IMessageService {
     @Override
     public Message save(Message message) {
         message.setTime_created(java.time.LocalDateTime.now());
+        int id = userRepository.findId(message.getUserIdTo()).get().getId();
+        message.setUserIdTo(id);
         return messageRepository.save(message);
     }
 

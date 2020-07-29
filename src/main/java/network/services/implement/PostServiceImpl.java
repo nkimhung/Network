@@ -15,6 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,6 +51,60 @@ public class PostServiceImpl implements IPostService {
     }
 
     @Override
+    public List<Post> getAllFollow(Integer userId) {
+        List<Post>  listPost = postRepository.findAllPostFollow(userId);
+        int index=0;
+        for (Post post: listPost
+        ) {
+            Post post1 =postService.getPostFullInfo(post);
+            listPost.set(index,post1);
+            index++;
+
+        }
+        return listPost;
+    }
+
+    @Override
+    public List<Post> getAllFollowByUser(Integer userId, Integer userIdFollow) {
+        List<Post>  listPost = postRepository.findAllPostFollowByUser(userId,userIdFollow);
+        int index=0;
+        for (Post post: listPost
+        ) {
+            Post post1 =postService.getPostFullInfo(post);
+            listPost.set(index,post1);
+            index++;
+
+        }
+        return listPost;
+    }
+
+    @Override
+    public List<Post> getAllMyPost(Integer userId) {
+        List<Post>  listPost = postRepository.findAllMyPost(userId);
+        int index=0;
+        for (Post post: listPost
+        ) {
+            Post post1 =postService.getPostFullInfo(post);
+            listPost.set(index,post1);
+            index++;
+
+        }
+        return listPost;
+    }
+
+    @Override
+    public List<String> getAllMyImage(Integer userId) {
+        List<Post>  listPost = postRepository.findAllMyPost(userId);
+        List<String> list = new ArrayList<>();
+        for (Post post: listPost
+        ) {
+            list.add(post.getPost_url());
+
+        }
+        return list;
+    }
+
+    @Override
     public Post getByID(Integer id) {
         Post post =postRepository.findById(id).get();
         return postService.getPostFullInfo(post);
@@ -65,7 +122,7 @@ public class PostServiceImpl implements IPostService {
 
     @Override
     public Post save(Post post) {
-        String time = java.time.LocalDateTime.now().toString();
+        LocalDateTime time = java.time.LocalDateTime.now();
         post.setTime_created(time);
         post.setTime_updated(time);
         return postRepository.save(post);
@@ -85,12 +142,12 @@ public class PostServiceImpl implements IPostService {
         if (null != post.getType()){
             updatingPost.setType(post.getType());
         }
-        updatingPost.setTime_updated(java.time.LocalDateTime.now().toString());
+        updatingPost.setTime_updated(java.time.LocalDateTime.now());
         return postRepository.save(updatingPost);
     }
 
     @Override
     public void delete(Integer id) {
-        postService.delete(id);
+        postRepository.deleteById(id);
     }
 }

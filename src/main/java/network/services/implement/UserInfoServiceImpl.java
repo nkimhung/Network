@@ -28,6 +28,16 @@ public class UserInfoServiceImpl implements IUserInfoService {
     }
 
     @Override
+    public List<UserInfo> GetFollow(Integer idUser) {
+        return userInfoRepository.findAllUserFollow(idUser);
+    }
+
+    @Override
+    public List<UserInfo> GetByFollow(Integer idUser) {
+        return userInfoRepository.findAllUserByFollow(idUser);
+    }
+
+    @Override
     public UserInfo save(UserInfo userInfo) {
         String time = java.time.LocalDateTime.now().toString();
         userInfo.setTime_created(time);

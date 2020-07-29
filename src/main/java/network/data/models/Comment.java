@@ -3,6 +3,7 @@ package network.data.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -14,8 +15,8 @@ public class Comment {
     private int post;
     private int user;
     private String content;
-    private String timeCreated;
-    private String timeUpdated;
+    private LocalDateTime timeCreated;
+    private LocalDateTime timeUpdated;
     @Transient
     private UserInfo userInfo;
 
@@ -59,19 +60,19 @@ public class Comment {
         this.content = content;
     }
 
-    public String getTimeCreated() {
+    public LocalDateTime getTimeCreated() {
         return timeCreated;
     }
 
-    public void setTimeCreated(String timeCreated) {
+    public void setTimeCreated(LocalDateTime timeCreated) {
         this.timeCreated = timeCreated;
     }
 
-    public String getTimeUpdated() {
+    public LocalDateTime getTimeUpdated() {
         return timeUpdated;
     }
 
-    public void setTimeUpdated(String timeUpdated) {
+    public void setTimeUpdated(LocalDateTime timeUpdated) {
         this.timeUpdated = timeUpdated;
     }
 }

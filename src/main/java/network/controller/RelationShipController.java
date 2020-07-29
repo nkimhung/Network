@@ -34,7 +34,6 @@ public class RelationShipController {
         Optional<User> user= iUserService.findByUsername(userName);
         return user.get().getId();
     }
-
     @PostMapping("/Relationship/{idUserTwo}")
     @HasRole("User")
     public ResponseEntity<String> AddUserInfo(@PathVariable("idUserTwo") Integer idUserTwo, @RequestHeader("AuthToken") String token) throws Exception {
@@ -46,14 +45,18 @@ public class RelationShipController {
         return new ResponseEntity<>("Ok!",HttpStatus.OK);
 
     }
+    @PostMapping("/ReadRelationship/{id}")
+    @HasRole("User")
+    public ResponseEntity<String> AddUserInfo(@PathVariable("id") Integer id) throws Exception {
+        relationshipService.read(id);
+        return new ResponseEntity<>("Ok!",HttpStatus.OK);
+
+    }
     @DeleteMapping("/Relationship/{id}")
     @HasRole("User")
     public ResponseEntity<String> Delete(@PathVariable("id") Integer id, @RequestHeader("AuthToken") String token) throws JsonProcessingException {
-        Optional<Relationship> currentRelationship = relationshipService.get(id);
-        if(currentRelationship.get().getUserOneId()!=this.getIdUser(token)){
-            return new ResponseEntity<>("Khong co quyen huy follow cua nguoi khac",HttpStatus.UNAUTHORIZED);
-        }
-        relationshipService.delete(id);
+        int idOne =this.getIdUser(token);
+        relationshipService.delete(idOne,id);
         return new ResponseEntity<>("delete!",HttpStatus.OK);
     }
 }
